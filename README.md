@@ -32,7 +32,9 @@ Models a single-processor scheduling problem with task durations and precedence 
 - Tasks cannot overlap on the single processor.
 - The objective is to minimize the sum of task start times.
 
-The script generates a weighted CNF file named `scheduling.wcnf`. It does not solve the instance directly.
+The script generates a weighted CNF file named `scheduling.wcnf`. It does not solve the instance directly. The exported WCNF file can be solved with RC2 or with a standalone Max-SAT solver such as LMHS.
+
+For the included example (`d = {1: 2, 2: 3}`, `T_max = 10`, precedence `1 -> 2`), the expected optimal solution starts task 1 at time 0 and task 2 at time 2, giving an optimal objective value (sum of start times) of **2**.
 
 ### 3. Traveling Salesperson Problem (TSP)
 
@@ -76,6 +78,7 @@ The assignment and routing scripts solve their respective instances using RC2. T
 
 - Hard clauses represent mandatory feasibility constraints.
 - Weighted soft clauses encode minimization objectives: selecting a decision incurs the corresponding penalty.
+- Assignment and routing costs are assumed to be positive integers.
 - The scheduling objective minimizes the sum of start times, not the makespan.
 - The routing implementation uses explicit subtour elimination constraints and is intended for small illustrative instances.
 - The examples use small, predefined instances for educational and methodological demonstration.
@@ -86,4 +89,4 @@ The input data and model parameters are defined directly in each Python script. 
 
 ## License
 
-No license has been specified yet. Add a license file if you intend to permit reuse or redistribution of this code.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
